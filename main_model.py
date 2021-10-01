@@ -128,7 +128,7 @@ class ModelFitting(Models):
                      confidence_agents,
                      choice_agents,
                      num_red_beads)
-        bounds = optimize.Bounds([0, 0], [1, 1])
+        bounds = optimize.Bounds([0.5, 0.5], [1, 1])
         res = optimize.minimize(self.NLL, x0=parameters_initial, args=arguments, method='trust-constr', bounds=bounds)
         # res = optimize.minimize(self.NLL, x0=parameters_initial, args=arguments, method='Nelder-Mead')
         parameters_opt = res.x
@@ -139,7 +139,7 @@ class ModelFitting(Models):
                      confidence_agents,
                      choice_agents,
                      num_red_beads)
-        bounds = optimize.Bounds([0, 0, 0, 0], [1, 1, 0.5, 0.5])
+        bounds = optimize.Bounds([0.5, 0.5, 0, 0], [1, 1, 6, 6])
         res = optimize.minimize(self.NLL, x0=parameters_initial, args=arguments, method='Nelder-Mead', bounds=bounds)
         # res = optimize.minimize(self.NLL, x0=parameters_initial, args=arguments, method='Nelder-Mead')
         parameters_opt = res.x
